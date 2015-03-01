@@ -1,0 +1,6 @@
+En los archivos viene comentarios para que ustedes puedan armar la dll y ejecutarla.
+makefile.win
+dllmain.c
+lo.py
+
+Cabe aclarar que este proyecto sólo podrá ser ejecutado en un entorno python compilado para una arquitectura de t32 bits en windows.

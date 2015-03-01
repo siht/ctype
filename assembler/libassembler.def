@@ -1,0 +1,15 @@
+; dlltool --base-file C:\Users\l\AppData\Local\Temp/cca03220.base --output-exp assembler.exp --dllname assembler.dll --output-def libassembler.def --no-export-all-symbols --add-stdcall-alias --exclude-symbol=DllMainCRTStartup@12 --def C:\Users\l\AppData\Local\Temp/cca03220.def --output-lib libassembler.a
+EXPORTS
+	HelloWorld @ 1
+	divide @ 2
+	fdivide @ 3
+	fmultiplica @ 4
+	fresta @ 5
+	fsuma @ 6
+	mcd @ 7
+	modulo @ 8
+	multiplica @ 9
+	resta @ 10
+	sdivide @ 11
+	smultiplica @ 12
+	suma @ 13

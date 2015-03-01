@@ -1,0 +1,35 @@
+# Project: assembler
+# Makefile created by Dev-C++ 4.9.9.2
+
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = dllmain.o $(RES)
+LINKOBJ  = dllmain.o $(RES)
+# aqui cambiar las rutas de estas librerias
+LIBS =  -L"E:/portableapps/Dev-CppPortable/App/devcpp/lib" --no-export-all-symbols --add-stdcall-alias 
+# aqui cambiar las rutas de estos includes
+INCS =  -I"E:/portableapps/Dev-CppPortable/App/devcpp/include" 
+CXXINCS =  -I"E:/portableapps/Dev-CppPortable/App/devcpp/lib/gcc/mingw32/3.4.2/include"  -I"E:/portableapps/Dev-CppPortable/App/devcpp/include/c++/3.4.2/backward"  -I"E:/portableapps/Dev-CppPortable/App/devcpp/include/c++/3.4.2/mingw32"  -I"E:/portableapps/Dev-CppPortable/App/devcpp/include/c++/3.4.2"  -I"E:/portableapps/Dev-CppPortable/App/devcpp/include" 
+BIN  = assembler.dll
+CXXFLAGS = $(CXXINCS) -DBUILDING_DLL=1 
+CFLAGS = $(INCS) -DBUILDING_DLL=1 
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before assembler.dll all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+DLLWRAP=dllwrap.exe
+DEFFILE=libassembler.def
+STATICLIB=libassembler.a
+
+$(BIN): $(LINKOBJ)
+	$(DLLWRAP) --output-def $(DEFFILE) --implib $(STATICLIB) $(LINKOBJ) $(LIBS) -o $(BIN)
+
+dllmain.o: dllmain.c
+	$(CC) -c dllmain.c -o dllmain.o $(CFLAGS)
